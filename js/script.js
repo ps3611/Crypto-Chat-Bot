@@ -32,20 +32,42 @@ function addBotAnswer() {
       setTimeout(addMessage,1000,'This is not a question!',"bot-text");
       setTimeout(addMessage,2000,'Please ask me a question',"bot-text");
     }
-    else if (Object.keys(coins).some(x => question.includes(x))) {
-      let coin_array = Object.keys(coins);
-      let index_array = [];
-      for (let i = 0; i < coin_array.length; i++) {
-        if(question.includes(coin_array[i])) index_array.push(i);
-      }
-      for (let i = 0; i < index_array.length; i++) {
-        let answer = "The price of " + coin_array[index_array[i]] + " is " + coins[coin_array[index_array[i]]];
-        setTimeout(addMessage,1000*(i+1),answer,"bot-text");
-      }
-    }
     else {
-      setTimeout(addMessage,1000,"I don't know the answer to this question :(","bot-text");
-      setTimeout(addMessage,2000,"Please ask me another one","bot-text");
+      fetchSymbol()
     }
     document.getElementById("messagebox").value = '';
+}
+
+function fetchSymbol(){
+  fetch('https://min-api.cryptocompare.com/data/all/coinlist')
+    .then(
+      response => {
+        if (response.ok) return response.json();
+        throw new Error('Request failed!');
+      },
+      networkError => console.log(networkError.message)
+    )
+    .then(
+      jsonResponse => {
+        let symbol = Object.keys(jsonResponse['Data'])[40]
+        fetchPrice(symbol);
+      }
+    );
+}
+
+function fetchPrice(symbol) {
+  fetch('https://min-api.cryptocompare.com/data/price?fsym=' + symbol + '&tsyms=USD')
+    .then(
+      response => {
+        if (response.ok) return response.json();
+        throw new Error('Request failed!');
+      },
+      networkError => console.log(networkError.message)
+    )
+    .then(
+      jsonResponse => {
+        let answer = "The price of " + symbol + " is " + jsonResponse['USD'];
+        setTimeout(addMessage,1000,answer,"bot-text");
+      }
+    );
 }
