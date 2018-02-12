@@ -47,23 +47,23 @@ p,h4,.postbutton {
 }
 
 form {
-    width: 100%;
-    margin: 10 auto;
-    height: 35px;
-    position: relative;
+  width: 100%;
+  margin: 10 auto;
+  height: 35px;
+  position: relative;
 }
 
 input[type=text] {
-    border: none;
-    background-color: #efa49a;
-    border-radius: 0px;
-    color: black;
-    font-family: "Source Code Pro", Menlo, Monaco, fixed-width;
-    outline-width: 0;
-    width: 80%;
-    height: 30px;
-    position: absolute;
-    left:0;
+  border: none;
+  background-color: #efa49a;
+  border-radius: 0px;
+  color: black;
+  font-family: "Source Code Pro", Menlo, Monaco, fixed-width;
+  outline-width: 0;
+  width: 80%;
+  height: 30px;
+  position: absolute;
+  left:0;
 }
 
 input[type=submit] {
