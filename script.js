@@ -14,8 +14,8 @@ function updateScroll(){
 
 function initialBotMessage() {
   setTimeout(addMessage,1000,"Hi there","bot-text");
-  setTimeout(addMessage,2000,"My name is Pedro","bot-text");
-  setTimeout(addMessage,3000,"Ask me any crypto related questions!","bot-text");
+  setTimeout(addMessage,2000,"My name is Crypto-Bot.","bot-text");
+  setTimeout(addMessage,3000,"Ask me the price of any cryptocurrency!","bot-text");
 }
 
 function addUserMessage() {
