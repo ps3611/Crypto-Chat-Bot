@@ -69,7 +69,7 @@ function fetchPrice(symbol) {
   )
   .then(
     jsonResponse => {
-      let answer = "The price of " + symbol + " is " + jsonResponse['USD'];
+      let answer = "The price of " + symbol + " is $" + jsonResponse['USD'];
       addMessage(answer,"bot-text");
     }
   );
